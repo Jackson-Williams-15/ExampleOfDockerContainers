@@ -128,7 +128,7 @@ This is what your connection string looks like if placed in the ```appsettings.j
         - `mysql`: This is the MySQL command-line client. It runs the MySQL shell within the container.
         - `-u<user>`: This specifies the MySQL user you want to log in as. The `-u` flag is used to specify the user. 
         - `-p<user-password>`: This specifies the password for the MySQL user. The `-p` flag is used to pass the password. Replace ``<user-password>`` with the actual password for the specified user of your MySQL instance. 
-            - ___Note___: Be careful with this, this will show your password on the CLI. To hide you password, use just `-p` instead and it will prompt you for your password. ``docker exec -it <container-name> mysql -u<user> -p``
+            - ___Note___: Be careful with this, this will show your password on the CLI. To hide your password, use just `-p` instead and it will prompt you for your password. ``docker exec -it <container-name> mysql -u<user> -p``
         - **Examples**:
             - In this repository (using the user and password from the .env file) the command would look like:
                 - ``docker exec -it mysql_db_container mysql -uteam_user -pTeamPassword``
