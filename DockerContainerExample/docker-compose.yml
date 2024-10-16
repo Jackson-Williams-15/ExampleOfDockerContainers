@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:latest                                # MySQL image
+    container_name: mysql_db_container                 # Naming the container
+    ports:
+      - "3307:3306"                                    # Expose MySQL port
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}                # Default database to create
+      MYSQL_USER: ${MYSQL_USER}                        # Non-root user for team
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}                # Non-root user password for team
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}      # Root Password 
+    volumes:
+      - mysql_data:/var/lib/mysql                      # Persistent data storage
+
+  app:
+    build:
+      context: .                                       # Docker will look for the Dockerfile here
+      dockerfile: Dockerfile                           # Path to the Dockerfile for the .NET app
+    container_name: dotnet_app_container               # Naming the container
+    ports:
+      - "5079:80"                                      # Map external port 5079 to internal port 80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development             #for ASP.NET Core environment
+    depends_on:
+      - db                                             # Ensure the MySQL container starts first
+    networks:
+      - app-network                                    # Define a shared network
+
+volumes:
+  mysql_data:                                          # Store and manage data outside of containers,making it easier to back up or share data
+networks:                                              
+  app-network:
