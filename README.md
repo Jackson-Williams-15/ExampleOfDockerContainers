@@ -85,7 +85,7 @@ This is what your connection string looks like if placed in the ```appsettings.j
 - The set up is slightly different if the connection string is set in the ```.env``` file. 
 
 ## Docker Setup/Commands
-- When you have pulled the repository containing the docker-compose.yml file, create your own ``.env`` and enter the correct environment variables (ensure the ``.env`` file is in the root folder of the project). They can start the MySQL container using the following command:
+- When you have cloned the repository containing the docker-compose.yml file, create your own ``.env`` and enter the correct environment variables (ensure the ``.env`` file is in the root folder of the project). They can start the MySQL container using the following command:
     - ``docker-compose up -d``
     - This command will:
         - Pull the MySQL image (if it's not already available locally).
@@ -118,7 +118,7 @@ This is what your connection string looks like if placed in the ```appsettings.j
             - Create databases, tables, and users.
             - Query the database.
         - Debug or inspect: Useful for checking the state of the database or running manual queries when you want to debug something in a live environment or development environment.
-        
+
     - __Breakdown__:
         - `docker exec`: This command is used to execute a command inside a running Docker container. It runs a command in an already running container so make sure the containers are running first.
         - `-it`: This flag makes the session interactive and attaches the terminal to the container. It means you're running the command in an interactive mode (useful for a MySQL session).
